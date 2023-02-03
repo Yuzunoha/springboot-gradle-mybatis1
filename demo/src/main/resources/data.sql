@@ -1,1 +1,1 @@
-insert into `user` (user_name, email) values ('user', 'user@example.com');
+insert into `user` (user_name, email) values ('user太郎', 'user@example.com');
