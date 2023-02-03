@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
-  @Select("select * from user")
+  @Select("select * from `user`")
   List<User> selectAll();
 
-  @Select({ "select * from user", "where id = #{id}" })
+  @Select({ "select * from `user`", "where id = #{id}" })
   User selectByPrimaryKey(Long id);
 
   @Insert(
