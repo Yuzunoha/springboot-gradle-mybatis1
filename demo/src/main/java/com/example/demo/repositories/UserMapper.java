@@ -26,6 +26,6 @@ public interface UserMapper {
   )
   int updateByPrimaryKey(User user);
 
-  @Delete({ "delete from user", "where id = #{id}" })
+  @Delete({ "delete from `user`", "where id = #{id}" })
   int deleteByPrimaryKey(Long id);
 }

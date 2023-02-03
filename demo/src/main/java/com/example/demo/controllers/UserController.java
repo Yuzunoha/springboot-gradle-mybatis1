@@ -24,4 +24,13 @@ public class UserController {
   public User getUserById(@PathVariable Long id) {
     return service.selectByPrimaryKey(id);
   }
+
+  @GetMapping("/users/delete/{id}")
+  public String delete(@PathVariable Long id) {
+    if (service.selectByPrimaryKey(id) == null) {
+      return "ユーザid:" + id + " のユーザは存在しません。";
+    }
+    service.deleteByPrimaryKey(id);
+    return "ユーザid:" + id + " のユーザを削除しました。";
+  }
 }
