@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.models.User;
 import com.example.demo.services.UserService;
 import java.util.List;
+import java.util.function.UnaryOperator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +28,11 @@ public class UserController {
 
   @GetMapping("/users/delete/{id}")
   public String delete(@PathVariable Long id) {
+    UnaryOperator<String> getMsg = (String lastStr) -> "ユーザid:" + id + " のユーザ" + lastStr;
     if (service.selectByPrimaryKey(id) == null) {
-      return "ユーザid:" + id + " のユーザは存在しません。";
+      return getMsg.apply("は存在しません。");
     }
     service.deleteByPrimaryKey(id);
-    return "ユーザid:" + id + " のユーザを削除しました。";
+    return getMsg.apply("を削除しました。");
   }
 }
