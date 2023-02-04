@@ -32,7 +32,7 @@ public class UserController {
     }
   }
 
-  @GetMapping("/")
+  @GetMapping("/users")
   public List<User> getAllUsers(Model model) {
     return service.selectAll();
   }
