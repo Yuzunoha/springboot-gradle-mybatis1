@@ -23,6 +23,15 @@ public class UserController {
   private final UserService service;
   private final ObjectMapper objectMapper;
 
+  protected <T> String json(T o) {
+    try {
+      return objectMapper.writeValueAsString(o);
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+      return "";
+    }
+  }
+
   @GetMapping("/")
   public List<User> getAllUsers(Model model) {
     return service.selectAll();
@@ -30,16 +39,10 @@ public class UserController {
 
   @PostMapping("/users")
   public String addUser(@Validated @ModelAttribute User user, BindingResult result) {
-    try {
-      if (result.hasErrors()) {
-        return objectMapper.writeValueAsString(result.getAllErrors());
-      } else {
-        return objectMapper.writeValueAsString(user);
-      }
-    } catch (JsonProcessingException e) {
-      e.printStackTrace();
-      return null;
+    if (result.hasErrors()) {
+      return json(result.getAllErrors());
     }
+    return json(user);
   }
 
   @GetMapping("/users/{id}")
