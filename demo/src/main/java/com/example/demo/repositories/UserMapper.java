@@ -12,7 +12,7 @@ public interface UserMapper {
   @Select({ "select * from `user`", "where id = #{id}" })
   User selectByPrimaryKey(Long id);
 
-  @Insert({ "insert into `user`(user_name, email)", "values(#{userName}, #{email})" })
+  @Insert({ "insert into `user`(user_name, email) values(#{userName}, #{email})" })
   int insert(User user);
 
   @Update({ "update user", "set user_name = #{userName}, email = #{email}", "where id = #{id}" })
