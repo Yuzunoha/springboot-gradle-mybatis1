@@ -42,7 +42,8 @@ public class UserController {
     if (result.hasErrors()) {
       return json(result.getAllErrors());
     }
-    return json(user);
+    service.save(user);
+    return "saveしました";
   }
 
   @GetMapping("/users/{id}")
