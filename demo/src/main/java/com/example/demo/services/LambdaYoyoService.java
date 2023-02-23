@@ -14,11 +14,13 @@ public class LambdaYoyoService {
     Flyable f = new Flyable() {
       @Override
       public String fly(int V, String U) {
-        // TODO Auto-generated method stub
         return U + V;
       }
     };
 
-    System.out.println("runですyoyo: " + f.fly(0, "Sです"));
+    Flyable g = (V, U) -> U + V;
+
+    System.out.println(f.fly(0, "a"));
+    System.out.println(g.fly(1, "b"));
   }
 }
