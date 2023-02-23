@@ -1,6 +1,6 @@
 package com.example.demo.services;
 
-import com.example.demo.interfaces.SampleSum;
+import com.example.demo.interfaces.Flyable;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,14 @@ public class LambdaYoyoService {
   private String url = "https://qiita.com/yoshitaro-yoyo/items/5a30915fc43a35ff10b4";
 
   public void run() {
-    SampleSum ss = new SampleSum() {
+    Flyable f = new Flyable() {
       @Override
-      public int sum(int x, int y) {
-        return x + y;
+      public String fly(int V, String U) {
+        // TODO Auto-generated method stub
+        return U + V;
       }
     };
-    System.out.println("runですyoyo: " + ss.sum(10, 3));
+
+    System.out.println("runですyoyo: " + f.fly(0, "Sです"));
   }
 }
