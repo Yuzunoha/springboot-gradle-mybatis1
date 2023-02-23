@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.interfaces.DoubleStr;
 import com.example.demo.interfaces.SampleSum;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,11 @@ public class LambdaJamboService {
 
   public void run() {
     SampleSum ss = new X();
+    SampleSum tt = (x, y) -> x + y;
+    DoubleStr ds = (x, y) -> x + y;
 
     System.out.println(ss.sum(3, 7));
+    System.out.println(tt.sum(3, 7));
+    System.out.println(ds.join("3", "7"));
   }
 }
